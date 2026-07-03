@@ -1,11 +1,10 @@
 ```
-pytorch-playground/
+pytorch_catch_ball/
 │
-├── catch-ball/
-├── snake-ai/
-├── flappy-bird/
-├── car-ai/
-└── README.md
+├── main.py          # game loop
+├── model.py         # PyTorch network
+├── agent.py         # chooses actions + tran model
+├── game.py          # pygame game
 ```
 
 ### game.py
@@ -127,6 +126,7 @@ It introduces four new ideas:
 Those aren't just extra features, they're **required** for the network to learn from rewards.
 
 (It's to hard for now to add this function, we gonna use it in the same project)
+
 #### What happens during trainning?
 ```
 Guess

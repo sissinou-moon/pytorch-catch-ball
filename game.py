@@ -10,7 +10,7 @@ PLAYER_WIDTH = 120
 PLAYER_HEIGHT = 20
 
 BALL_SPEED = 5
-PLAYER_SPEED = 8
+PLAYER_SPEED = 3
 
 
 class CatchGame:
@@ -66,7 +66,7 @@ class CatchGame:
 
             done = True
 
-        return reward, done
+        return self.get_state(), reward, done
 
     def draw(self):
 
@@ -94,3 +94,10 @@ class CatchGame:
 
     def tick(self):
         self.clock.tick(60)
+
+    def get_state(self):
+        return [
+            self.ball_x,
+            self.ball_y,
+            self.player_x
+        ]

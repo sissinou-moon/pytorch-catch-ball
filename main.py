@@ -1,9 +1,10 @@
-import pygame
 import random
-
+import pygame
+from agent import Agent
 from game import CatchGame
 
 game = CatchGame()
+agent = Agent()
 
 running = True
 
@@ -14,9 +15,23 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    action = random.randint(0, 2)
+    state = game.get_state()
 
-    reward, done = game.step(action)
+    action = agent.get_action(state)
+
+    next_state, reward, done = game.step(action)
+
+    agent.remember(
+        state,
+        action,
+        reward,
+        next_state,
+        done
+    )
+
+    print(agent.memory[-1])
+
+    agent.train()
 
     game.draw()
 
